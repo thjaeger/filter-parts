@@ -60,17 +60,17 @@
           return;
         }
 
-        var upToMatch = cond.match(/^(up|adj) to (.*)$/i);
+        var upToMatch = cond.match(/^(up|adj|down) to(.*)$/i);
         if (upToMatch !== null) {
           condMin = 0;
-          condMax = parseValue(upToMatch[2], checkUnit);
+          condMax = parseValue(upToMatch[2].trim(), checkUnit);
           return;
         }
 
-        var rangeMatch = cond.match(/^() *~ *()$/);
+        var rangeMatch = cond.match(/^(.*)~(.*)$/);
         if (rangeMatch !== null) {
-          condMin = parseValue(upToMatch[1], checkUnit);
-          condMax = parseValue(upToMatch[2], checkUnit);
+          condMin = parseValue(rangeMatch[1].trim(), checkUnit);
+          condMax = parseValue(rangeMatch[2].trim(), checkUnit);
         }
       })();
 
