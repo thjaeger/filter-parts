@@ -125,6 +125,7 @@
 
       });
       $(this).after(input);
+      $(this).after('<br />');
     });
   }
 
